@@ -5,6 +5,7 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   display: block;
+  border: solid 5px black;
 }
 
 .keys {
@@ -21,17 +22,17 @@
 .keys button:nth-child(1) {
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
-  -ms-grid-column: 2;
+  -ms-grid-column: 1;
   -ms-grid-column-span: 1;
-  grid-area: 1 / 2 / 2 / 3;
+  grid-area: 1 / 1 / 2 / 2;
 }
 
 .keys button:nth-child(2) {
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
-  -ms-grid-column: 1;
+  -ms-grid-column: 2;
   -ms-grid-column-span: 1;
-  grid-area: 1 / 1 / 2 / 2;
+  grid-area: 1 / 2 / 2 / 3;
 }
 
 .keys button:nth-child(3) {
