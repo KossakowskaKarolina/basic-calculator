@@ -59,7 +59,7 @@ operatorButtons.forEach(operator => operator.addEventListener('click', function(
 
 equalButton.addEventListener('click', function(e){
   equation.push(secondNumberShow);
-  result = equation.join('');
+  result = equation.join('') || '0';
   display.innerHTML = eval(result);
   clearAll();
   firstNumberShow = eval(result);
