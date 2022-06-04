@@ -65,10 +65,17 @@ operatorButtons.forEach(operator => operator.addEventListener('click', function(
 // Listen for click on equal button
 
 equalButton.addEventListener('click', function(e){
-  let result = mathIt(firstNumber, opsButton, secondNumber);
-  display.innerHTML = result;
-  secondNumber = '';
-  firstNumber = result;
+
+  // If something was not clicked - reset calculator and prevent Nan
+  if(firstNumber === '' || opsButton === '' || secondNumber === '') {
+    cleanAll();
+    display.innerHTML = 'Oops, try again!';
+  } else {
+      let result = mathIt(firstNumber, opsButton, secondNumber);
+      display.innerHTML = result;
+      secondNumber = '';
+      firstNumber = result;
+  }
 })
 
 
