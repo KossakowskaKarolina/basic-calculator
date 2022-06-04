@@ -10,12 +10,17 @@ const display = document.querySelector('.display');
 
 // Define variables
 
-let equation = [];
-let firstNumber = [];
-let firstNumberShow;
-let secondNumber = [];
-let secondNumberShow;
+let firstNumber ='';
+let secondNumber = '';
+let opsButton = '';
 
+// Clean variables above
+
+function cleanAll(){
+  firstNumber ='';
+  secondNumber = '';
+  opsButton = '';
+}
 
 // Do the actual math operation
 
@@ -35,29 +40,17 @@ function mathIt(num1, ops, num2){
 }
 
 
-// Clear variables above
-
-function clearAll(){
-  equation.length = 0;
-  firstNumber.length = 0;
-  secondNumber.length = 0;
-  secondNumberShow = undefined;
-}
-
-
 // Listen for click on numbers
 
 numberButtons.forEach(number => number.addEventListener('click', function(e){
   let text = e.target.textContent; // shows what was clicked
 
-  if(equation.length === 0){
-    firstNumber.push(text);
-    firstNumberShow = firstNumber.join('');
-    display.innerHTML = firstNumberShow;
+  if(opsButton === ''){
+    firstNumber += text;
+    display.innerHTML = firstNumber;
   } else {
-    secondNumber.push(text);
-    secondNumberShow = secondNumber.join('');
-    display.innerHTML = secondNumberShow;
+    secondNumber += text;
+    display.innerHTML = secondNumber;
   }
 }))
 
@@ -65,28 +58,23 @@ numberButtons.forEach(number => number.addEventListener('click', function(e){
 // Listen for click on operators
 
 operatorButtons.forEach(operator => operator.addEventListener('click', function(e){
-  if(firstNumberShow){
-    equation.push(firstNumberShow);
-    equation.push(e.target.textContent);
-  }
+  opsButton = e.target.textContent;
 }))
 
 
 // Listen for click on equal button
 
 equalButton.addEventListener('click', function(e){
-  equation.push(secondNumberShow);
-  let result = mathIt(...equation);
+  let result = mathIt(firstNumber, opsButton, secondNumber);
   display.innerHTML = result;
-  clearAll();
-  firstNumberShow = result;
+  secondNumber = '';
+  firstNumber = result;
 })
 
 
 // Listen for click on allClear button - reset calculator
 
 clearAllButton.addEventListener('click', function(e){
-  clearAll();
-  firstNumberShow = undefined;
+  cleanAll();
   display.innerHTML = '0';
 })
