@@ -15,7 +15,21 @@ let firstNumber = [];
 let firstNumberShow;
 let secondNumber = [];
 let secondNumberShow;
-let result;
+
+
+// Do the actual math operation
+
+function mathIt(num1, ops, num2){
+  if (ops === '+'){
+    return parseFloat(num1) + parseFloat(num2);
+  } else if (ops === '-'){
+    return parseFloat(num1) - parseFloat(num2);
+  } else if (ops === '*'){
+    return parseFloat(num1) * parseFloat(num2);
+  } else if (ops === '/'){
+    return parseFloat(num1) / parseFloat(num2);
+  }
+}
 
 
 // Clean variables above
@@ -55,14 +69,14 @@ operatorButtons.forEach(operator => operator.addEventListener('click', function(
 }))
 
 
-// Listen for click on equal button - make actual operation
+// Listen for click on equal button
 
 equalButton.addEventListener('click', function(e){
   equation.push(secondNumberShow);
-  result = equation.join('') || '0';
-  display.innerHTML = eval(result);
+  let result = mathIt(...equation);
+  display.innerHTML = result;
   clearAll();
-  firstNumberShow = eval(result);
+  firstNumberShow = result;
 })
 
 
