@@ -20,19 +20,22 @@ let secondNumberShow;
 // Do the actual math operation
 
 function mathIt(num1, ops, num2){
+  num1 = parseFloat(num1)
+  num2 = parseFloat(num2)
+
   if (ops === '+'){
-    return parseFloat(num1) + parseFloat(num2);
+    return num1 + num2;
   } else if (ops === '-'){
-    return parseFloat(num1) - parseFloat(num2);
+    return num1 - num2;
   } else if (ops === '*'){
-    return parseFloat(num1) * parseFloat(num2);
+    return num1 * num2;
   } else if (ops === '/'){
-    return parseFloat(num1) / parseFloat(num2);
+    return num1 / num2;
   }
 }
 
 
-// Clean variables above
+// Clear variables above
 
 function clearAll(){
   equation.length = 0;
