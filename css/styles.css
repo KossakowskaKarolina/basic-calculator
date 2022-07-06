@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .calculator {
   position: absolute;
   left: 50%;
@@ -5,7 +9,17 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   display: block;
-  border: solid 5px black;
+}
+
+.calculator::before {
+  content: '';
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  z-index: -1;
+  background: url(./../blob.svg) no-repeat;
+  left: -50%;
+  top: -50%;
 }
 
 .display {
@@ -13,6 +27,9 @@
   width: 300px;
   line-height: 50px;
   text-align: end;
+  color: #fff;
+  font-size: larger;
+  font-family: 'Poppins', sans-serif;
 }
 
 .keys {
@@ -24,6 +41,16 @@
       grid-template-columns: repeat(4, 1fr);
   -ms-grid-rows: (1fr)[5];
       grid-template-rows: repeat(5, 1fr);
+}
+
+.keys button {
+  background: #fff;
+  font-family: 'Poppins', sans-serif;
+  border-color: #FF0066;
+  -webkit-box-shadow: 5px 5px 10px #eaeaea;
+          box-shadow: 5px 5px 10px #eaeaea;
+  color: #FF0066;
+  border-radius: 14px;
 }
 
 .keys button:nth-child(1) {
