@@ -65,12 +65,20 @@ operatorButtons.forEach(operator => operator.addEventListener('click', function(
 // Listen for click on equal button
 
 equalButton.addEventListener('click', function(e){
-
+  console.log(opsButton, secondNumber)
   // If something was not clicked - reset calculator and prevent Nan
   if(firstNumber === '' || opsButton === '' || secondNumber === '') {
     cleanAll();
     display.innerHTML = 'Oops, try again!';
-  } else {
+  }
+  // When Infinity is the result
+  else if(opsButton === '/' && secondNumber === '0'){
+    cornify_add();
+    cleanAll();
+    display.innerHTML = 'Do not divide by 0!'
+  }
+  // Show correct result
+  else {
       let result = mathIt(firstNumber, opsButton, secondNumber);
       display.innerHTML = result;
       secondNumber = '';
